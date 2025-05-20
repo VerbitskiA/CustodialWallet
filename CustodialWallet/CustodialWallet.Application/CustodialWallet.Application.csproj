@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Users\Commands\" />
+      <Folder Include="Users\Models\" />
+      <Folder Include="Users\Queries\" />
+      <Folder Include="Wallets\Commands\" />
+      <Folder Include="Wallets\Models\" />
+      <Folder Include="Wallets\Queries\" />
+    </ItemGroup>
+
+</Project>
