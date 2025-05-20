@@ -7,12 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Users\Commands\" />
-      <Folder Include="Users\Models\" />
-      <Folder Include="Users\Queries\" />
-      <Folder Include="Wallets\Commands\" />
-      <Folder Include="Wallets\Models\" />
-      <Folder Include="Wallets\Queries\" />
+      <PackageReference Include="FluentValidation" Version="12.0.0" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
+      <PackageReference Include="MediatR" Version="12.5.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CustodialWallet.Domain\CustodialWallet.Domain.csproj" />
     </ItemGroup>
 
 </Project>
