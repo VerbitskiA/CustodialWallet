@@ -1,3 +1,4 @@
+using System;
 using CustodialWallet.Domain.Exceptions;
 
 namespace CustodialWallet.Domain.Entities;
@@ -16,6 +17,7 @@ public class Wallet
         if (amount <= 0)  
             throw new ArgumentException("Сумма должна быть положительной.");  
 
+        amount = Math.Round(amount, 8, MidpointRounding.ToZero);
         Balance += amount;  
     }  
   
@@ -24,6 +26,8 @@ public class Wallet
         if (amount <= 0)  
             throw new ArgumentException("Сумма должна быть положительной.");  
 
+        amount = Math.Round(amount, 8, MidpointRounding.ToZero); 
+        
         if (Balance < amount)  
             throw new InsufficientFundsException($"Недостаточно средств. Текущий баланс: {Balance} {Currency}");  
 

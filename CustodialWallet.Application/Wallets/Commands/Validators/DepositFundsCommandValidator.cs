@@ -27,7 +27,9 @@ public class DepositFundsCommandValidator : AbstractValidator<DepositFundsComman
 
         RuleFor(x => x.Amount)
             .GreaterThan(0)
-            .WithMessage("Сумма должна быть больше 0.");
+            .WithMessage("Сумма должна быть больше 0.")
+            .PrecisionScale(18, 8, false)
+            .WithMessage("Сумма должна иметь до 8 знаков после запятой.");
         
         _userRepository = userRepository;
     }

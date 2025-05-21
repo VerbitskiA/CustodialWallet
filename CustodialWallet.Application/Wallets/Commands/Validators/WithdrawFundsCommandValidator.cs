@@ -27,7 +27,10 @@ public class WithdrawFundsCommandValidator : AbstractValidator<WithdrawFundsComm
 
         RuleFor(x => x.Amount)
             .GreaterThan(0)
-            .WithMessage("Сумма должна быть больше 0.");
+            .WithMessage("Сумма должна быть больше 0.")
+            .PrecisionScale(18, 8, false)
+            .WithMessage("Сумма должна иметь до 8 знаков после запятой.");
+            
 
         RuleFor(x => x.DestinationAddress)
             .NotEmpty()

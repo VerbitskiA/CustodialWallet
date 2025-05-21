@@ -1,3 +1,5 @@
+using System;
+
 namespace CustodialWallet.Domain.Exceptions;
 
 public class DuplicateUserException : Exception  
