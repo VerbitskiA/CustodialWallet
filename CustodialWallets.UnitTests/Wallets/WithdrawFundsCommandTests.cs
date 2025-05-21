@@ -41,7 +41,7 @@ public class WithdrawFundsCommandHandlerTests
             .ReturnsAsync((Wallet?)null);
 
         // Act & Assert
-        await Assert.ThrowsAsync<ValidationException>(() => 
+        await Assert.ThrowsAsync<InsufficientFundsException>(() => 
             _handler.Handle(command, CancellationToken.None));
     }
 
