@@ -9,7 +9,7 @@ public class DepositFundsCommandValidator : AbstractValidator<DepositFundsComman
 {
     private readonly IUserRepository _userRepository;
     
-    public DepositFundsCommandValidator(IUserRepository userRepository, IOptions<CurrencySettings> currencyOptions)
+    public DepositFundsCommandValidator(IUserRepository userRepository, IOptionsSnapshot<CurrencySettings> currencyOptions)
     {
         var allowedCurrencies = currencyOptions.Value.AllowedCurrencies;
         

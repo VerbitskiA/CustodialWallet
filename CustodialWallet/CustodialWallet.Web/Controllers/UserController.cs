@@ -15,6 +15,11 @@ public class UsersController(IMediator mediator) : ControllerBase
     private const string DefaultTicker = "BTC";
     private const string DefaultWithdrawAddress = "default-withdraw-address";
 
+    /// <summary>
+    /// Метод регистрации пользователя.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<ActionResult<RegisterUserResponse>> Register(RegisterUserCommand request)
     {

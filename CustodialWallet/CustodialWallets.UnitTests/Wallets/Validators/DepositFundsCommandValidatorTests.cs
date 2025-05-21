@@ -12,15 +12,16 @@ public class DepositFundsCommandValidatorTests
 {
     private readonly Mock<IUserRepository> _userRepositoryMock = new();
     private readonly DepositFundsCommandValidator _validator;
-    private readonly CurrencySettings _currencySettings = new()
-    {
-        AllowedCurrencies = new[] { "BTC", "ETH", "SOL" }
-    };
+    private readonly Mock<IOptionsSnapshot<CurrencySettings>> _currencySettingsMock = new();
 
     public DepositFundsCommandValidatorTests()
     {
-        var options = Options.Create(_currencySettings);
-        _validator = new DepositFundsCommandValidator(_userRepositoryMock.Object, options);
+        _currencySettingsMock.Setup(x => x.Value).Returns(new CurrencySettings()
+        {
+            AllowedCurrencies = new[] { "BTC", "ETH", "SOL" }
+        });
+        
+        _validator = new DepositFundsCommandValidator(_userRepositoryMock.Object, _currencySettingsMock.Object);
     }
 
     [Fact]

@@ -9,7 +9,7 @@ public class WithdrawFundsCommandValidator : AbstractValidator<WithdrawFundsComm
 {
     private readonly IUserRepository _userRepository;
 
-    public WithdrawFundsCommandValidator(IOptions<CurrencySettings> currencyOptions, IUserRepository userRepository)
+    public WithdrawFundsCommandValidator(IOptionsSnapshot<CurrencySettings> currencyOptions, IUserRepository userRepository)
     {
         var allowedCurrencies = currencyOptions.Value.AllowedCurrencies;
 

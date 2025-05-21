@@ -12,17 +12,18 @@ namespace CustodialWallets.UnitTests.Wallets.Validators
     {
         private readonly Mock<IUserRepository> _userRepositoryMock;
         private readonly WithdrawFundsCommandValidator _validator;
-        private readonly CurrencySettings _currencySettings = new()
-        {
-            AllowedCurrencies = new[] { "BTC", "ETH", "SOL" }
-        };
+        private readonly Mock<IOptionsSnapshot<CurrencySettings>> _currencySettingsMock = new();
 
         public WithdrawFundsCommandValidatorTests()
         {
-            _userRepositoryMock = new Mock<IUserRepository>();
-            var options = Options.Create(_currencySettings);
+            _currencySettingsMock.Setup(x => x.Value).Returns(new CurrencySettings()
+            {
+                AllowedCurrencies = new[] { "BTC", "ETH", "SOL" }
+            });
             
-            _validator = new WithdrawFundsCommandValidator(options, _userRepositoryMock.Object);
+            _userRepositoryMock = new Mock<IUserRepository>();
+            
+            _validator = new WithdrawFundsCommandValidator(_currencySettingsMock.Object, _userRepositoryMock.Object);
         }
 
         [Fact]

@@ -19,6 +19,14 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
                 HttpStatusCode.Conflict,
                 ex.Message);
         }
+        catch (InsufficientFundsException)
+        {
+            httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+            await httpContext.Response.WriteAsJsonAsync(new
+            {
+                Error = "Insufficient funds"
+            });
+        }
         catch (ValidationException ex)
         {
             await HandleExceptionAsync(httpContext,

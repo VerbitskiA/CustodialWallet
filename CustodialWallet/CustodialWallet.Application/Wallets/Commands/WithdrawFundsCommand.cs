@@ -27,7 +27,7 @@ public class WithdrawFundsCommandHandler(IWalletRepository walletRepository,
         var wallet = await walletRepository.GetByUserAndCurrency(request.UserId, request.Currency, cancellationToken);
 
         if (wallet is null)
-            throw new ValidationException($"Кошелек с валютой {request.Currency} не найден.");
+            throw new InsufficientFundsException($"Кошелек с валютой {request.Currency} не найден.");
 
         if (wallet.Balance < request.Amount)
             throw new InsufficientFundsException(
